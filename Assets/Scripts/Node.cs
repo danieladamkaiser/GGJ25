@@ -34,6 +34,11 @@ public class Node : MonoBehaviour {
         transform.localRotation = Quaternion.Euler(0, -60f * dir, 0);
     }
 
+    void Awake()
+    {
+        ApplyTransform();
+    }
+
 #if UNITY_EDITOR
     protected virtual void Update() {
         if (!Application.isPlaying) {
