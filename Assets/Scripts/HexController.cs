@@ -18,6 +18,8 @@ public class HexController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("Cliscked!");
+        Debug.Log("0" +Input.GetMouseButton(0));
+        Debug.Log("1" +Input.GetMouseButton(1));
+        Debug.Log("2" +Input.GetMouseButton(2));
     }
 }
