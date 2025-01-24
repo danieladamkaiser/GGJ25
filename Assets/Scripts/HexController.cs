@@ -30,9 +30,10 @@ public class HexController : MonoBehaviour
                 grid.RemoveNode(hex.Hash());
             }
         }
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetMouseButtonDown(0))
         {
             var node = GetComponent<Node>();
+            Debug.Log("Clicked on " + node.hex.ToString());
             foreach (var hex in node.hex.Neighbours())
             {
                 var grid = GameObject.FindObjectOfType<SuperGrid>();
