@@ -26,7 +26,7 @@ public static class HexVectorExtensions {
 [System.Serializable]
 public struct Hex {
 
-    public static float RADIUS = 0.5f;
+    public static float RADIUS = 0.9f;
     public static Vector2 Q_BASIS = new Vector2(2f, 0) * RADIUS;
     public static Vector2 R_BASIS = new Vector2(1f, Mathf.Sqrt(3)) * RADIUS;
     public static Vector2 Q_INV = new Vector2(1f / 2, - Mathf.Sqrt(3) / 6);
