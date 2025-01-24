@@ -18,6 +18,12 @@ public class HexController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("Cliscked!");
+        var node = GetComponent<Node>();
+        Debug.Log("Clicked on " + node.hex.ToString());
+        foreach (var hex in node.hex.Neighbours())
+        {
+            var grid = GameObject.FindObjectOfType<SuperGrid>();
+            grid.RemoveNode(hex.Hash());
+        }
     }
 }

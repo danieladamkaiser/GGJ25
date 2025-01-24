@@ -141,8 +141,9 @@ public struct Hex {
         return (q == hex.q) && (r == hex.r);
     }
 
-    public override int GetHashCode() {
-        return 23 + 31 * q + 37 * r;
+    public string Hash()
+    {
+        return ToString();
     }
 
     public override string ToString() {
