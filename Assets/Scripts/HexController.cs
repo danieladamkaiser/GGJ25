@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class HexController : MonoBehaviour
 {
@@ -16,14 +18,26 @@ public class HexController : MonoBehaviour
         
     }
 
-    private void OnMouseDown()
+    private void OnMouseOver()
     {
-        var node = GetComponent<Node>();
-        Debug.Log("Clicked on " + node.hex.ToString());
-        foreach (var hex in node.hex.Neighbours())
+        if (Input.GetMouseButtonDown(1))
         {
-            var grid = GameObject.FindObjectOfType<SuperGrid>();
-            grid.RemoveNode(hex.Hash());
+            var node = GetComponent<Node>();
+            Debug.Log("Clicked on " + node.hex.ToString());
+            foreach (var hex in node.hex.Neighbours())
+            {
+                var grid = GameObject.FindObjectOfType<SuperGrid>();
+                grid.RemoveNode(hex.Hash());
+            }
+        }
+        if (Input.GetMouseButtonDown(2))
+        {
+            var node = GetComponent<Node>();
+            foreach (var hex in node.hex.Neighbours())
+            {
+                var grid = GameObject.FindObjectOfType<SuperGrid>();
+                grid.AddNode(hex);
+            }
         }
     }
 }
