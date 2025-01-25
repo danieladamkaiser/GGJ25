@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,11 +34,29 @@ public partial class HexController : MonoBehaviour
     {
         Debug.Log("Adding effect: " + effect.GetType() + " to "  + gameObject.name);
         effects.Add(effect);
+        ShowEffect(effect);
+    }
+
+    void ShowEffect(IEffect effect)
+    {
         var effectEffect = effect.GetEffectEffect();
-        if (effectEffect)
+        if (effectEffect && effect.CanBeApplied(currentHexTop))
         {
             var go = Instantiate(effectEffect, transform.position, Quaternion.identity);
             go.transform.LookAt(Camera.main.transform);
+        }
+    }
+
+    void ShowAllEffects()
+    {
+        float effectDelay = 0;
+        foreach (var effect in effects)
+        {
+            if (effect.CanBeApplied(currentHexTop))
+            {
+                this.Invoke(() => ShowEffect(effect), effectDelay);
+                effectDelay += 0.15f;
+            }
         }
     }
 
@@ -74,6 +93,7 @@ public partial class HexController : MonoBehaviour
         if (prefab != null)
         {
             currentHexTopGO = Instantiate(prefab, transform);
+            ShowAllEffects();
         }
     }
 
@@ -121,7 +141,7 @@ public partial class HexController : MonoBehaviour
         Vector3 pos = basePosition;
         foreach (var effect in effects)
         {
-            pos += effect.PositionModifier();
+            if (effect.CanBeApplied(currentHexTop)) pos += effect.PositionModifier();
         }
         
         transform.position = pos;
@@ -157,5 +177,19 @@ public partial class HexController : MonoBehaviour
             var grid = FindObjectOfType<SuperGrid>();
             grid.RemoveNode(hex);
         }
+    }
+}
+
+public static class Utility
+{
+    public static void Invoke(this MonoBehaviour mb, Action f, float delay)
+    {
+        mb.StartCoroutine(InvokeRoutine(f, delay));
+    }
+
+    private static IEnumerator InvokeRoutine(System.Action f, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        f();
     }
 }
