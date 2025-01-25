@@ -14,13 +14,13 @@ public class Build : IAction
         switch (type)
         {
             case HexTopsType.House:
-                cost = 1000;
+                cost = 1;
                 break;
             case HexTopsType.Tree:
-                cost = 500;
+                cost = 5;
                 break;
             case HexTopsType.Skyscrapper:
-                cost = 5000;
+                cost = 50;
                 break;
             default:
                 cost = 0;
@@ -75,8 +75,8 @@ public class Build : IAction
 
         Debug.Log("Action ok");
         node.ClearOverlay();
-        controller.ChangeHexTop(type);
-        OnBuild();
+        controller.ChangeHexTop(type, cost);
+        OnBuild(node);
         return IAction.EActionResult.SUCCESS;
     }
 
@@ -113,20 +113,20 @@ public class Build : IAction
         return active;
     }
 
-    void OnBuild()
+    void OnBuild(Node node)
     {
         var market = GameObject.FindObjectOfType<MarketManager>();
         market.AddDebt(cost);
         switch (type)
         {
             case HexTopsType.House:
-                BuildHouseEffects(market);
+                BuildHouseEffects(market, node);
                 break;
             case HexTopsType.Tree:
-                BuildTreeEffects(market);
+                BuildTreeEffects(market, node);
                 break;
             case HexTopsType.Skyscrapper:
-                BuildSkyscraperEffects(market);
+                BuildSkyscraperEffects(market, node);
                 break;
             default:
                 break;
@@ -134,18 +134,19 @@ public class Build : IAction
         market.NextIteration();
     }
 
-    void BuildHouseEffects(MarketManager market)
+    void BuildHouseEffects(MarketManager market, Node node)
     {
-        market.AddValuation(cost);
     }
     
-    void BuildTreeEffects(MarketManager market)
+    void BuildTreeEffects(MarketManager market, Node node)
     {
-        market.AddValuation(cost);
+        foreach (var neighbour in node.GetNeighbours())
+        {
+            neighbour.GetComponent<HexController>().AddEffect(new ValueMultiplayer(1.1f));
+        }
     }
     
-    void BuildSkyscraperEffects(MarketManager market)
+    void BuildSkyscraperEffects(MarketManager market, Node node)
     {
-        market.AddValuation(cost);
     }
 }

@@ -69,6 +69,18 @@ public class Node : MonoBehaviour {
         ApplyTransform();
     }
 
+    public List<Node> GetNeighbours()
+    {
+        List<Node> neighbours = new List<Node>();
+        foreach (var h in hex.Neighbours())
+        {
+            var grid = FindObjectOfType<SuperGrid>();
+            var n = grid.GetNode(h);
+            if (n != null) neighbours.Add(n);
+        }
+        return neighbours;
+    }
+
 #if UNITY_EDITOR
     protected virtual void Update() {
         if (!Application.isPlaying) {

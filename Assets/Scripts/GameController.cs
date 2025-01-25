@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject currentPlayerGO;
     [SerializeField] private HexTop[] hexTops;
     [SerializeField] private GameObject ActionItemPrefab;
+    [SerializeField] public GameObject PlusEffectPrefab;
+    [SerializeField] public GameObject MinusEffectPrefab;
 
     private Player _player;
 

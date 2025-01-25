@@ -13,7 +13,8 @@ public class SuperGrid : MonoBehaviour
 
     private Node currentNode;
     private Dictionary<string, Node> nodes = new Dictionary<string, Node>();
-
+    private MarketManager market;
+    
     public Node GetNode(Hex hex)
     {
         if (!nodes.ContainsKey(hex.Hash()))
@@ -112,11 +113,18 @@ public class SuperGrid : MonoBehaviour
     void Start()
     {
         CreateGrid();
+        market = FindObjectOfType<MarketManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        int val = market.baseValuation;
+        foreach (var node in nodes.Values)
+        {
+            val += node.GetComponent<HexController>().GetValue();
+        }
+
+        market.SetValuation(val);
     }
 }
