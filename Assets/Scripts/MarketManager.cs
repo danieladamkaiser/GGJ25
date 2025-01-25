@@ -90,7 +90,7 @@ public partial class MarketManager : MonoBehaviour
 
     public void SetValuation(int value)
     {
-        valuationText.text = $"{value * globalModifier} $";
+        valuationText.text = $"{value} $";
         currentValuation = value;
     }
     private void SetDebt(int value)
@@ -101,7 +101,6 @@ public partial class MarketManager : MonoBehaviour
 
     public void NextIteration()
     {
-        SetValuation((int)(currentValuation));
         AddInterest();
         currentProgress += GetIncrementValue();
         slider.value = currentProgress;
