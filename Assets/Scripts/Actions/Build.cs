@@ -1,13 +1,31 @@
 
+using System.Linq;
 using UnityEngine;
 
 public class Build : IAction
 {
     private HexTopsType type;
+    private int cost = 0;
+    private bool active = false;
 
     public Build(HexTopsType _type)
     {
         type = _type;
+        switch (type)
+        {
+            case HexTopsType.House:
+                cost = 0;
+                break;
+            case HexTopsType.Tree:
+                cost = 0;
+                break;
+            case HexTopsType.Skyscrapper:
+                cost = 0;
+                break;
+            default:
+                cost = 0;
+                break;
+        }
     }
     
     public IAction.EActionStatus Update()
@@ -33,11 +51,13 @@ public class Build : IAction
 
     public IAction.EActionResult OnStart()
     {
+        active = true;
         return IAction.EActionResult.SUCCESS;
     }
 
     public IAction.EActionResult OnApply()
     {
+        active = false;
         var grid = GameObject.FindObjectOfType<SuperGrid>();
         var node = grid.GetCurrentNode();
        
@@ -56,16 +76,75 @@ public class Build : IAction
         Debug.Log("Action ok");
         node.ClearOverlay();
         controller.ChangeHexTop(type);
+        OnBuild();
         return IAction.EActionResult.SUCCESS;
     }
 
     public IAction.EActionResult OnCancel()
     {
+        active = false;
         return IAction.EActionResult.SUCCESS;
     }
 
     public bool CanBeStarted()
     {
-        return true;
+        var market = GameObject.FindObjectOfType<MarketManager>();
+        if (market.GetCreditworthiness() >= cost)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public GameObject GetRepresentation()
+    {
+        var gameController = GameObject.FindObjectOfType<GameController>();
+        var prefab = gameController.GetHexTopPrefab(type);
+        return prefab;
+    }
+
+    public int GetCost()
+    {
+        return cost;
+    }
+
+    public bool IsActionActive()
+    {
+        return active;
+    }
+
+    void OnBuild()
+    {
+        var market = GameObject.FindObjectOfType<MarketManager>();
+        market.AddDebt(cost);
+        switch (type)
+        {
+            case HexTopsType.House:
+                BuildHouseEffects();
+                break;
+            case HexTopsType.Tree:
+                BuildTreeEffects();
+                break;
+            case HexTopsType.Skyscrapper:
+                BuildSkyscraperEffects();
+                break;
+            default:
+                break;
+        }
+    }
+
+    void BuildHouseEffects()
+    {
+        
+    }
+    
+    void BuildTreeEffects()
+    {
+        
+    }
+    
+    void BuildSkyscraperEffects()
+    {
+        
     }
 }

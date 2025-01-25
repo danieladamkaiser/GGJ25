@@ -49,6 +49,11 @@ public partial class MarketManager : MonoBehaviour
     {
     }
 
+    public int GetCreditworthiness()
+    {
+        return currentValuation - currentDebt;
+    }
+
     private void AddInterest()
     {
         currentDebt = (int)(currentDebt * (1 + interestRate / 100f));

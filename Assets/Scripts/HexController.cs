@@ -7,17 +7,16 @@ using UnityEngine.UIElements;
 
 public partial class HexController : MonoBehaviour
 {
-    public HexTop[] hexTops;
-
     public HexTopsType currentHexTop = HexTopsType.None;
     private GameObject currentHexTopGO;
     private GameObject preview;
+    private GameController gameController;
     [SerializeField] Material transparentMaterial;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameController = FindObjectOfType<GameController>();
     }
 
     // Update is called once per frame
@@ -42,7 +41,7 @@ public partial class HexController : MonoBehaviour
             currentHexTopGO = null;
         }
 
-        var prefab = hexTops.Where(ht => ht.type == currentHexTop).Select(ht => ht.prefab).FirstOrDefault();
+        var prefab = gameController.GetHexTopPrefab(hexTopsType);
 
         if (prefab != null)
         {
@@ -53,7 +52,7 @@ public partial class HexController : MonoBehaviour
     public void HexTopPreview(HexTopsType hexTopsType, bool isOk)
     {
         StopHexTopPreview();
-        var prefab = hexTops.Where(ht => ht.type == hexTopsType).Select(ht => ht.prefab).FirstOrDefault();
+        var prefab = gameController.GetHexTopPrefab(hexTopsType);
         if (prefab != null)
         {
             preview = Instantiate(prefab, transform);

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public interface IAction
 {
     public enum EActionResult
@@ -18,4 +20,7 @@ public interface IAction
     public EActionResult OnApply();
     public EActionResult OnCancel();
     public bool CanBeStarted();
+    public GameObject GetRepresentation();
+    public int GetCost();
+    public bool IsActionActive();
 }
