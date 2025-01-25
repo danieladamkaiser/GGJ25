@@ -119,12 +119,13 @@ public class SuperGrid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int val = market.baseValuation;
+        var globalMod = market.globalModifier;
+        float val = 0f;
         foreach (var node in nodes.Values)
         {
             val += node.GetComponent<HexController>().GetValue();
         }
 
-        market.SetValuation(val);
+        market.SetValuation((int)val);
     }
 }

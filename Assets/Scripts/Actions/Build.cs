@@ -60,7 +60,7 @@ public class Build : IAction
 
         Debug.Log("Action ok");
         node.ClearOverlay();
-        controller.ChangeHexTop(hexTop.type, hexTop.cost);
+        controller.ChangeHexTop(hexTop.type, hexTop.value);
         OnBuild(node);
         return IAction.EActionResult.SUCCESS;
     }
@@ -97,7 +97,7 @@ public class Build : IAction
     void OnBuild(Node node)
     {
         var market = GameObject.FindObjectOfType<MarketManager>();
-        market.AddDebt(hexTop.cost);
+        market.AddDebt((int)(hexTop.cost * market.globalModifier));
         switch (hexTop.type)
         {
             case HexTopsType.House:

@@ -18,7 +18,7 @@ public partial class MarketManager : MonoBehaviour
     public GameObject panel;
 
     public int currentValuation;
-    public int baseValuation = 1000;
+    public int baseValuation;
     public int currentDebt;
     public float currentProgress;
     public float globalModifier = 1;
@@ -74,7 +74,7 @@ public partial class MarketManager : MonoBehaviour
 
     public int GetCreditworthiness()
     {
-        return currentValuation - currentDebt;
+        return int.MaxValue;
     }
 
     private void AddInterest()
@@ -101,10 +101,10 @@ public partial class MarketManager : MonoBehaviour
 
     public void NextIteration()
     {
+        AddInterest();
         currentProgress += GetIncrementValue();
         slider.value = currentProgress;
         SetStage();
-        AddInterest();
 
         if (IsGameOver)
         {
