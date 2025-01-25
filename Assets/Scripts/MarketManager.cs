@@ -53,6 +53,7 @@ public partial class MarketManager : MonoBehaviour
         slider.maxValue = GetTotalDuration(); 
         SetDebt(currentDebt);
         SetValuation(currentValuation);
+        SetStage();
     }
 
     private float GetTotalDuration()
@@ -138,6 +139,7 @@ public partial class MarketManager : MonoBehaviour
         stageText.text = stages[i].Type.ToString();
         stageText.color = stages[i].Color;
         interestRate = stages[i].InterestRates;
+        interestText.text = interestRate.ToString() + " %";
     }
 
     private float GetIncrementValue()
