@@ -9,6 +9,14 @@ public class Node : MonoBehaviour {
     public int dir;
     public bool randomizeDir = false;
     public bool lockY = false;
+    private HexController _controller;
+    private bool hasOverlay = false;
+    private bool isOk = false;
+
+    void Start()
+    {
+        _controller = GetComponent<HexController>();
+    }
 
     public Hex hex {
         get {
@@ -20,6 +28,28 @@ public class Node : MonoBehaviour {
         get {
             return transform.localPosition.ToHex();
         }
+    }
+
+    public void ClearOverlay()
+    {
+        hasOverlay = false;
+        _controller.StopHexTopPreview();
+    }
+    
+    public void SetOk(HexTopsType type = HexTopsType.None)
+    {
+        if (hasOverlay && isOk) return;
+        isOk = true;
+        hasOverlay = true;
+        _controller.HexTopPreview(type, true);
+    }
+
+    public void SetFail(HexTopsType type = HexTopsType.None)
+    {
+        if (hasOverlay && !isOk) return;
+        isOk = false;
+        hasOverlay = false;
+        _controller.HexTopPreview(type, false);
     }
 
     public void ApplyTransform() {
