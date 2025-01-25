@@ -33,6 +33,8 @@ public partial class HexController : MonoBehaviour
     {
         Debug.Log("Adding effect: " + effect.GetType() + " to "  + gameObject.name);
         effects.Add(effect);
+        var effectEffect = effect.GetEffectEffect();
+        if (effectEffect) Instantiate(effectEffect, transform);
     }
 
     public int GetValue()

@@ -17,7 +17,8 @@ class ValueMultiplayer : IEffect
 
     public GameObject GetEffectEffect()
     {
-        return null;
+        var gc = GameObject.FindObjectOfType<GameController>();
+        return multiplier > 0 ? gc.PlusEffectPrefab : gc.MinusEffectPrefab;
     }
 
     public Vector3 PositionModifier()
