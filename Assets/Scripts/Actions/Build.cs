@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -120,12 +121,18 @@ public class Build : IAction
     
     void BuildTreeEffects(MarketManager market, Node node)
     {
+        var types = new List<HexTopsType>();
+        types.Add(HexTopsType.House);
         foreach (var neighbour in node.GetNeighbours())
         {
-            neighbour.GetComponent<HexController>().AddEffect(new ValueMultiplayer(1.1f));
+            neighbour.GetComponent<HexController>().AddEffect(
+                new ValueMultiplayer(
+                    1.1f, types
+                )
+            );
         }
     }
-    
+
     void BuildSkyscraperEffects(MarketManager market, Node node)
     {
         foreach (var neighbour in node.GetNeighbours())

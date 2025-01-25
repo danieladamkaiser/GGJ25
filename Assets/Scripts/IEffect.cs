@@ -9,4 +9,9 @@ public interface IEffect
         return new Vector3(0, 0, 0);
     }
     GameObject GetEffectEffect();
+
+    bool CanBeApplied(HexTopsType type)
+    {
+        return true;
+    }
 }

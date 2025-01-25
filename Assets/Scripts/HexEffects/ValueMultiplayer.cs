@@ -1,18 +1,31 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 class ValueMultiplayer : IEffect
 {
     private float multiplier;
-
-    public ValueMultiplayer(float multiplier)
+    private List<HexTopsType> types;
+    
+    public ValueMultiplayer(float multiplier, List<HexTopsType> types)
     {
         this.multiplier = multiplier;
+        this.types = types;
     }
-    
-    public int GetValuation(int cost)
+
+    bool CanBeApplied(HexTopsType type)
     {
-        return (int)(multiplier * cost);
+        if (types == null)
+        {
+            return true;
+        }
+        
+        return types.Exists(t => t != type);
+    }
+
+    public int GetValuation(int v)
+    {
+        return (int)(multiplier * v);
     }
 
     public GameObject GetEffectEffect()
