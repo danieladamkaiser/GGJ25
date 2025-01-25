@@ -10,4 +10,6 @@ public class Stage
     public Color Color;
     [Range(0,10)]
     public int InterestRates;
+    [Range(-50, 50)]
+    public int GrowthRate;
 }

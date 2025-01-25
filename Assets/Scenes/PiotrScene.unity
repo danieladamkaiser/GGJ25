@@ -1236,7 +1236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7346705950196627806, guid: d61f0fe5b6f4bb34eb9cb2fae36c67d0, type: 3}
       propertyPath: baseValuation
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7346705950196627806, guid: d61f0fe5b6f4bb34eb9cb2fae36c67d0, type: 3}
       propertyPath: incrementRangeMax
@@ -1248,11 +1248,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7346705950196627806, guid: d61f0fe5b6f4bb34eb9cb2fae36c67d0, type: 3}
       propertyPath: stages.Array.data[0].Duration
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7346705950196627806, guid: d61f0fe5b6f4bb34eb9cb2fae36c67d0, type: 3}
       propertyPath: stages.Array.data[1].Duration
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7346705950196627806, guid: d61f0fe5b6f4bb34eb9cb2fae36c67d0, type: 3}
       propertyPath: stages.Array.data[2].Duration
@@ -1260,7 +1260,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7346705950196627806, guid: d61f0fe5b6f4bb34eb9cb2fae36c67d0, type: 3}
       propertyPath: stages.Array.data[3].Duration
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7346705950196627806, guid: d61f0fe5b6f4bb34eb9cb2fae36c67d0, type: 3}
+      propertyPath: stages.Array.data[0].GrowthRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7346705950196627806, guid: d61f0fe5b6f4bb34eb9cb2fae36c67d0, type: 3}
+      propertyPath: stages.Array.data[1].GrowthRate
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7346705950196627806, guid: d61f0fe5b6f4bb34eb9cb2fae36c67d0, type: 3}
+      propertyPath: stages.Array.data[3].GrowthRate
+      value: -10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1526,10 +1538,20 @@ MonoBehaviour:
   hexTops:
   - prefab: {fileID: 7901771375496747128, guid: 9bba4cadf3ff29647b3534e003e2c543, type: 3}
     type: 1
+    cost: 25
+    value: 0
   - prefab: {fileID: 7254489338627478931, guid: 66f813e3d094d254889b9e765176719f, type: 3}
     type: 2
+    cost: 200
+    value: 100
   - prefab: {fileID: 3491598863828669790, guid: 6c61e77e83b50c942bc75f3c1a449917, type: 3}
     type: 4
+    cost: 1000
+    value: 500
+  - prefab: {fileID: 3491598863828669790, guid: 6c61e77e83b50c942bc75f3c1a449917, type: 3}
+    type: 6
+    cost: 50
+    value: 0
   ActionItemPrefab: {fileID: 4489785613981910462, guid: f3e2443cd7c81947caf73f8868c20b70, type: 3}
   PlusEffectPrefab: {fileID: 2140485968522987731, guid: b92b42a6184a5aa74a8c244414f5a172, type: 3}
   MinusEffectPrefab: {fileID: 2140485968522987731, guid: b92b42a6184a5aa74a8c244414f5a172, type: 3}

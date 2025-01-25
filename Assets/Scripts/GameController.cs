@@ -13,15 +13,11 @@ public class GameController : MonoBehaviour
 
     private Player _player;
 
-    public static IAction[] Actions =
-    {
-        new Build(HexTopsType.House),
-        new Build(HexTopsType.Tree),
-        new Build(HexTopsType.Skyscrapper),
-    };
+    public static IAction[] Actions;
 
     void Start()
     {
+        Actions = hexTops.Select(ht=> new Build(ht)).ToArray();
         _player = currentPlayerGO.GetComponent<Player>();
         SetupActions();
     }

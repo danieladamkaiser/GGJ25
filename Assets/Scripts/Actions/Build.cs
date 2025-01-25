@@ -4,28 +4,12 @@ using UnityEngine;
 
 public class Build : IAction
 {
-    private HexTopsType type;
-    private int cost = 0;
+    private HexTop hexTop;
     private bool active = false;
 
-    public Build(HexTopsType _type)
+    public Build(HexTop hexTop)
     {
-        type = _type;
-        switch (type)
-        {
-            case HexTopsType.House:
-                cost = 1;
-                break;
-            case HexTopsType.Tree:
-                cost = 5;
-                break;
-            case HexTopsType.Skyscrapper:
-                cost = 50;
-                break;
-            default:
-                cost = 0;
-                break;
-        }
+        this.hexTop = hexTop;
     }
     
     public IAction.EActionStatus Update()
@@ -41,11 +25,11 @@ public class Build : IAction
         var controller = node.GetComponent<HexController>();
         if (controller.Occupied())
         {
-            node.SetFail(type);
+            node.SetFail(hexTop.type);
             return IAction.EActionStatus.CAN_NOT_BE_DONE;
         }
 
-        node.SetOk(type);
+        node.SetOk(hexTop.type);
         return IAction.EActionStatus.CAN_BE_DONE;
     }
 
@@ -75,7 +59,7 @@ public class Build : IAction
 
         Debug.Log("Action ok");
         node.ClearOverlay();
-        controller.ChangeHexTop(type, cost);
+        controller.ChangeHexTop(hexTop.type, hexTop.cost);
         OnBuild(node);
         return IAction.EActionResult.SUCCESS;
     }
@@ -89,19 +73,19 @@ public class Build : IAction
     public bool CanBeStarted()
     {
         var market = GameObject.FindObjectOfType<MarketManager>();
-        return (!market.IsGameOver && market.GetCreditworthiness() >= cost);
+        return (!market.IsGameOver && market.GetCreditworthiness() >= hexTop.cost);
     }
 
     public GameObject GetRepresentation()
     {
         var gameController = GameObject.FindObjectOfType<GameController>();
-        var prefab = gameController.GetHexTopPrefab(type);
+        var prefab = gameController.GetHexTopPrefab(hexTop.type);
         return prefab;
     }
 
     public int GetCost()
     {
-        return cost;
+        return hexTop.cost;
     }
 
     public bool IsActionActive()
@@ -112,8 +96,8 @@ public class Build : IAction
     void OnBuild(Node node)
     {
         var market = GameObject.FindObjectOfType<MarketManager>();
-        market.AddDebt(cost);
-        switch (type)
+        market.AddDebt(hexTop.cost);
+        switch (hexTop.type)
         {
             case HexTopsType.House:
                 BuildHouseEffects(market, node);

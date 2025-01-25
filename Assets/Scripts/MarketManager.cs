@@ -21,6 +21,7 @@ public partial class MarketManager : MonoBehaviour
     public int baseValuation = 1000;
     public int currentDebt;
     public float currentProgress;
+    public float globalModifier = 1;
 
     [SerializeField]
     public Stage[] stages;
@@ -40,8 +41,9 @@ public partial class MarketManager : MonoBehaviour
 
     private Slider slider;
     private SceneSwapper sceneSwapper;
+    private bool isCompanySold;
 
-    public bool IsGameOver => currentDebt > currentValuation || currentProgress > GetTotalDuration();
+    public bool IsGameOver => currentProgress > GetTotalDuration() || isCompanySold;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +52,7 @@ public partial class MarketManager : MonoBehaviour
         stageText.outlineWidth = 0.25f;
         stageText.outlineColor = Color.black;
         slider = progressSliderGO.GetComponent<Slider>();
-        slider.maxValue = GetTotalDuration(); 
+        slider.maxValue = GetTotalDuration();
         SetDebt(currentDebt);
         SetValuation(currentValuation);
         SetStage();
@@ -63,6 +65,11 @@ public partial class MarketManager : MonoBehaviour
 
     private void OnValidate()
     {
+    }
+
+    public void SellCompany()
+    {
+        isCompanySold = true;
     }
 
     public int GetCreditworthiness()
@@ -101,7 +108,7 @@ public partial class MarketManager : MonoBehaviour
 
         if (IsGameOver)
         {
-            scoreText.text = $"{currentValuation-currentDebt} $";
+            scoreText.text = $"{currentValuation - currentDebt} $";
             panel.SetActive(true);
         }
     }
@@ -110,7 +117,7 @@ public partial class MarketManager : MonoBehaviour
     {
         sceneSwapper.StartGame();
     }
-    
+
     public void GoToMainMenu()
     {
         sceneSwapper.GoToMainMenu();
@@ -140,6 +147,7 @@ public partial class MarketManager : MonoBehaviour
         stageText.color = stages[i].Color;
         interestRate = stages[i].InterestRates;
         interestText.text = interestRate.ToString() + " %";
+        globalModifier *= (100 + stages[i].GrowthRate) / 100f;
     }
 
     private float GetIncrementValue()
