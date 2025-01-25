@@ -148,5 +148,9 @@ public class Build : IAction
     
     void BuildSkyscraperEffects(MarketManager market, Node node)
     {
+        foreach (var neighbour in node.GetNeighbours())
+        {
+            neighbour.GetComponent<HexController>().AddEffect(new ValueMultiplayer(0.8f));
+        }
     }
 }

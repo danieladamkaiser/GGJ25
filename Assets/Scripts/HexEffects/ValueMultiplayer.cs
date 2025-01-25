@@ -18,12 +18,12 @@ class ValueMultiplayer : IEffect
     public GameObject GetEffectEffect()
     {
         var gc = GameObject.FindObjectOfType<GameController>();
-        var prefab =  multiplier > 0 ? gc.PlusEffectPrefab : gc.MinusEffectPrefab;
+        var prefab =  multiplier -1f > 0 ? gc.PlusEffectPrefab : gc.MinusEffectPrefab;
         var txt = prefab.GetComponent<TextUpAndDissappear>();
         if (txt != null)
         {
             txt.SetText("* " + multiplier.ToString("F2"));
-            txt.SetColor(multiplier > 0 ? Color.green : Color.red);
+            txt.SetColor(multiplier -1f > 0 ? Color.green : Color.red);
         }
         return prefab;
     }
@@ -32,6 +32,6 @@ class ValueMultiplayer : IEffect
     {
         var abs = Mathf.Abs(multiplier);
         var val = abs - 1f;
-        return new Vector3(0, val * 2, 0);
+        return new Vector3(0, val * 1, 0);
     }
 }
