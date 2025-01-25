@@ -65,7 +65,8 @@ public partial class HexController : MonoBehaviour
         int val = buildingValue;
         foreach (var effect in effects)
         {
-            val = effect.GetValuation(val);
+            if (effect.CanBeApplied(currentHexTop))
+                val = effect.GetValuation(val);
         }
         
         return val;
