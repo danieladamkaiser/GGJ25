@@ -34,7 +34,6 @@ public class MarketManager : MonoBehaviour
     void Start()
     {
         slider = progressSliderGO.GetComponent<Slider>();
-        getcom
     }
 
     private void OnValidate()
