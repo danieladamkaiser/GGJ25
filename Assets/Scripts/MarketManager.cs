@@ -74,7 +74,7 @@ public partial class MarketManager : MonoBehaviour
 
     public int GetCreditworthiness()
     {
-        return currentValuation - currentDebt;
+        return int.MaxValue;
     }
 
     private void AddInterest()

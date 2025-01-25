@@ -13,14 +13,14 @@ class ValueMultiplayer : IEffect
         this.types = types;
     }
 
-    bool CanBeApplied(HexTopsType type)
+    public bool CanBeApplied(HexTopsType type)
     {
         if (types == null)
         {
             return true;
         }
         
-        return types.Exists(t => t != type);
+        return types.Exists(t => t == type);
     }
 
     public int GetValuation(int v)
