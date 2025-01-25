@@ -18,7 +18,14 @@ class ValueMultiplayer : IEffect
     public GameObject GetEffectEffect()
     {
         var gc = GameObject.FindObjectOfType<GameController>();
-        return multiplier > 0 ? gc.PlusEffectPrefab : gc.MinusEffectPrefab;
+        var prefab =  multiplier > 0 ? gc.PlusEffectPrefab : gc.MinusEffectPrefab;
+        var txt = prefab.GetComponent<TextUpAndDissappear>();
+        if (txt != null)
+        {
+            txt.SetText("* " + multiplier.ToString("F2"));
+            txt.SetColor(multiplier > 0 ? Color.green : Color.red);
+        }
+        return prefab;
     }
 
     public Vector3 PositionModifier()

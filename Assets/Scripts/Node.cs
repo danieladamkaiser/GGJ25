@@ -80,6 +80,18 @@ public class Node : MonoBehaviour {
         }
         return neighbours;
     }
+    
+    public List<Node> GetNeighboursRadius(int r)
+    {
+        List<Node> neighbours = new List<Node>();
+        foreach (var h in Hex.Ring(hex, r))
+        {
+            var grid = FindObjectOfType<SuperGrid>();
+            var n = grid.GetNode(h);
+            if (n != null) neighbours.Add(n);
+        }
+        return neighbours;
+    }
 
 #if UNITY_EDITOR
     protected virtual void Update() {
