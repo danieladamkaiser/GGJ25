@@ -81,7 +81,7 @@ public partial class MarketManager : MonoBehaviour
         currentDebt = value;
     }
 
-    private void NextIteration()
+    public void NextIteration()
     {
         currentProgress += GetIncrementValue();
         slider.value = currentProgress;

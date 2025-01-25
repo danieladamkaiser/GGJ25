@@ -1512,8 +1512,8 @@ MonoBehaviour:
   debtText: {fileID: 11636139684708045}
   stageText: {fileID: 7068384852491254949}
   interestText: {fileID: 3521196685375790894}
-  currentValuation: 5000
-  currentDebt: 1000
+  currentValuation: 1000
+  currentDebt: 0
   currentProgress: 0
   stages:
   - Type: 0

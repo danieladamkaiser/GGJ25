@@ -14,13 +14,13 @@ public class Build : IAction
         switch (type)
         {
             case HexTopsType.House:
-                cost = 0;
+                cost = 1000;
                 break;
             case HexTopsType.Tree:
-                cost = 0;
+                cost = 500;
                 break;
             case HexTopsType.Skyscrapper:
-                cost = 0;
+                cost = 5000;
                 break;
             default:
                 cost = 0;
@@ -120,31 +120,32 @@ public class Build : IAction
         switch (type)
         {
             case HexTopsType.House:
-                BuildHouseEffects();
+                BuildHouseEffects(market);
                 break;
             case HexTopsType.Tree:
-                BuildTreeEffects();
+                BuildTreeEffects(market);
                 break;
             case HexTopsType.Skyscrapper:
-                BuildSkyscraperEffects();
+                BuildSkyscraperEffects(market);
                 break;
             default:
                 break;
         }
+        market.NextIteration();
     }
 
-    void BuildHouseEffects()
+    void BuildHouseEffects(MarketManager market)
     {
-        
+        market.AddValuation(cost);
     }
     
-    void BuildTreeEffects()
+    void BuildTreeEffects(MarketManager market)
     {
-        
+        market.AddValuation(cost);
     }
     
-    void BuildSkyscraperEffects()
+    void BuildSkyscraperEffects(MarketManager market)
     {
-        
+        market.AddValuation(cost);
     }
 }
