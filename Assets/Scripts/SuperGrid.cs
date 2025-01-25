@@ -119,7 +119,6 @@ public class SuperGrid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var globalMod = market.globalModifier;
         float val = 0f;
         foreach (var node in nodes.Values)
         {
