@@ -80,12 +80,13 @@ public class Node : MonoBehaviour {
         }
         return neighbours;
     }
-    
-    public List<Node> GetNeighboursRadius(int r)
+
+    public List<Node> GetNeighborsRange(int r)
     {
         List<Node> neighbours = new List<Node>();
-        foreach (var h in Hex.Ring(hex, r))
+        foreach (var h in Hex.Spiral(hex, 0, r))
         {
+            Debug.Log(h);
             var grid = FindObjectOfType<SuperGrid>();
             var n = grid.GetNode(h);
             if (n != null) neighbours.Add(n);

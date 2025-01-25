@@ -157,7 +157,7 @@ public partial class HexController : MonoBehaviour
         FindObjectOfType<SuperGrid>().UnsetCurrentNode(GetComponent<Node>());
     }
 
-    private void CreateNeighbours()
+    public void CreateNeighbours()
     {
         var node = GetComponent<Node>();
         Debug.Log("Clicked on " + node.hex.ToString());
@@ -168,7 +168,7 @@ public partial class HexController : MonoBehaviour
         }
     }
 
-    private void RemoveNeighbours()
+    public void RemoveNeighbours()
     {
         var node = GetComponent<Node>();
         Debug.Log("Clicked on " + node.hex.ToString());
