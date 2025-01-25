@@ -135,9 +135,11 @@ public class Build : IAction
 
     void BuildSkyscraperEffects(MarketManager market, Node node)
     {
+        var types = new List<HexTopsType>();
+        types.Add(HexTopsType.House);
         foreach (var neighbour in node.GetNeighbours())
         {
-            neighbour.GetComponent<HexController>().AddEffect(new ValueMultiplayer(0.8f));
+            neighbour.GetComponent<HexController>().AddEffect(new ValueMultiplayer(0.8f, types));
         }
     }
 }
