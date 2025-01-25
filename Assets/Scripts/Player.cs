@@ -4,11 +4,24 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public IAction currentAction;
+    public IAction currentAction = null;
 
     void Start()
     {
-        currentAction = new Build(HexTopsType.House);
+    }
+    
+    
+    public void SetAction(IAction action)
+    {
+        if (currentAction != null)
+        {
+            currentAction.OnCancel();
+        }
+        if (!action.CanBeStarted())
+        {
+            return;
+        }
+        currentAction = action;
         currentAction.OnStart();
     }
 
@@ -26,14 +39,14 @@ public class Player : MonoBehaviour
         if (actionUpdateResult == IAction.EActionStatus.CANCELED)
         {
             currentAction.OnCancel();
-            currentAction = new Build(HexTopsType.Tree);
+            currentAction = null;
         }
 
         if (Input.GetMouseButtonDown(0) && actionUpdateResult == IAction.EActionStatus.CAN_BE_DONE)
         {
             Debug.Log("Mouse Down");
             currentAction.OnApply();
-            currentAction = new Build(HexTopsType.Tree);
+            currentAction = null;
         }
     }
 }

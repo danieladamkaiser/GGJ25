@@ -49,6 +49,11 @@ public partial class MarketManager : MonoBehaviour
     {
     }
 
+    public int GetCreditworthiness()
+    {
+        return currentValuation - currentDebt;
+    }
+
     private void AddInterest()
     {
         currentDebt = (int)(currentDebt * (1 + interestRate / 100f));
@@ -76,7 +81,7 @@ public partial class MarketManager : MonoBehaviour
         currentDebt = value;
     }
 
-    private void NextIteration()
+    public void NextIteration()
     {
         currentProgress += GetIncrementValue();
         slider.value = currentProgress;

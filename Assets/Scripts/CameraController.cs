@@ -7,21 +7,34 @@ public class CameraController : MonoBehaviour
 {
     private Hex center;
     [SerializeField] private float speed = 100f;
+    public float rotation;
     void Start()
     {
         center = new Hex(0, 0);
         gameObject.transform.LookAt(center.ToWorld());
     }
 
+    public static void RotateAround(Vector3 point, Transform transform, bool left)
+    {
+        if (left)
+        {
+            transform.RotateAround(point, Vector3.up, 35 * Time.deltaTime);
+        }
+        else
+        {
+             transform.RotateAround(point, Vector3.up, -35 * Time.deltaTime);
+        }
+    }
+
     void Update()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.RotateAround(center.ToWorld(), Vector3.up, 35 * Time.deltaTime);
+            RotateAround(center.ToWorld(), transform, true);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.RotateAround(center.ToWorld(), Vector3.up, -35 * Time.deltaTime);
+            RotateAround(center.ToWorld(), transform, false);
         }
         else
         {
@@ -32,6 +45,7 @@ public class CameraController : MonoBehaviour
             
             transform.position = pos;
             gameObject.transform.LookAt(center.ToWorld());
+            rotation = 0;
         }
     }
 
