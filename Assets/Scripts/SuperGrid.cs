@@ -11,16 +11,49 @@ public class SuperGrid : MonoBehaviour
     [SerializeField]
     public GameObject prefab;
 
+    private Node currentNode;
     private Dictionary<string, Node> nodes = new Dictionary<string, Node>();
 
-    public Node GetNode(string hash)
+    public Node GetNode(Hex hex)
     {
-        if (!nodes.ContainsKey(hash))
+        if (!nodes.ContainsKey(hex.Hash()))
         {
             return null;
         }
         
-        return nodes[hash];
+        return nodes[hex.Hash()];
+    }
+
+    public void SetCurrentNode(Node node)
+    {
+        Debug.Log("Setting current node to " + node.hex);
+        if (currentNode != node)
+        {
+            node.ClearOverlay();
+        }
+
+        currentNode = node;
+    }
+
+    public void UnsetCurrentNode(Node node)
+    {
+        Debug.Log("Unsetting current node " + node.hex);
+        node.ClearOverlay();
+
+        if (currentNode == node)
+        {
+            currentNode = null;
+        }
+    }
+
+    public Node GetCurrentNode()
+    {
+        return currentNode;
+    }
+
+    public Hex GetCurrentHex()
+    {
+        return currentNode.hex;
     }
 
     public Node AddNode(Hex hex)
@@ -36,10 +69,10 @@ public class SuperGrid : MonoBehaviour
         return nodes[hex.Hash()];
     }
     
-    public void RemoveNode(string hash)
+    public void RemoveNode(Hex hex)
     {
-        Debug.Log("Removing node " + hash);
-        var node = GetNode(hash);
+        Debug.Log("Removing node " + hex.Hash());
+        var node = GetNode(hex);
         if (node == null)
         {
             Debug.Log("Log not found");
@@ -47,7 +80,7 @@ public class SuperGrid : MonoBehaviour
         }
         
         Debug.Log("Removed node " + node.hex.ToString());
-        nodes.Remove(hash);
+        nodes.Remove(hex.Hash());
         DestroyImmediate(node.gameObject);
     }
     
@@ -55,7 +88,7 @@ public class SuperGrid : MonoBehaviour
     {
         foreach (var node in nodes.Values.ToArray())
         {
-            RemoveNode(node.hex.Hash());
+            RemoveNode(node.hex);
         }
 
         for (int x = -radius; x < radius; x++)

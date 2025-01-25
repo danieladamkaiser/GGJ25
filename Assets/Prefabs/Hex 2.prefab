@@ -91,9 +91,8 @@ MonoBehaviour:
     type: 1
   - prefab: {fileID: 7254489338627478931, guid: 66f813e3d094d254889b9e765176719f, type: 3}
     type: 2
-  - prefab: {fileID: 3491598863828669790, guid: 6c61e77e83b50c942bc75f3c1a449917, type: 3}
-    type: 4
-  currentHexTop: 1
+  currentHexTop: 0
+  transparentMaterial: {fileID: 2100000, guid: 945a638d3ecdcaca99fef087f3212f97, type: 2}
 --- !u!114 &-7149096068247525106
 MonoBehaviour:
   m_ObjectHideFlags: 0
