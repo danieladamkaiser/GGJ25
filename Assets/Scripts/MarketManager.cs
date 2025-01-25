@@ -1,5 +1,7 @@
 using System.Linq;
 using TMPro;
+using TMPro.EditorUtilities;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Slider = UnityEngine.UI.Slider;
@@ -11,6 +13,9 @@ public partial class MarketManager : MonoBehaviour
     public TMP_Text debtText;
     public TMP_Text stageText;
     public TMP_Text interestText;
+    public TMP_Text scoreText;
+
+    public GameObject panel;
 
     public int currentValuation;
     public int baseValuation = 1000;
@@ -34,16 +39,25 @@ public partial class MarketManager : MonoBehaviour
     public int interestRate;
 
     private Slider slider;
+    private SceneSwapper sceneSwapper;
+
+    public bool IsGameOver => currentDebt > currentValuation || currentProgress > GetTotalDuration();
 
     // Start is called before the first frame update
     void Start()
     {
+        sceneSwapper = FindObjectOfType<SceneSwapper>();
         stageText.outlineWidth = 0.25f;
         stageText.outlineColor = Color.black;
         slider = progressSliderGO.GetComponent<Slider>();
-        slider.maxValue = stages.Sum(s => s.Duration);
+        slider.maxValue = GetTotalDuration(); 
         SetDebt(currentDebt);
         SetValuation(currentValuation);
+    }
+
+    private float GetTotalDuration()
+    {
+        return stages.Sum(s => s.Duration);
     }
 
     private void OnValidate()
@@ -83,6 +97,22 @@ public partial class MarketManager : MonoBehaviour
         slider.value = currentProgress;
         SetStage();
         AddInterest();
+
+        if (IsGameOver)
+        {
+            scoreText.text = $"{currentValuation-currentDebt} $";
+            panel.SetActive(true);
+        }
+    }
+
+    public void Restart()
+    {
+        sceneSwapper.StartGame();
+    }
+    
+    public void GoToMainMenu()
+    {
+        sceneSwapper.GoToMainMenu();
     }
 
     private void SetStage()

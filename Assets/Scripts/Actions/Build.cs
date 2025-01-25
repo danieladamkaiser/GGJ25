@@ -89,11 +89,7 @@ public class Build : IAction
     public bool CanBeStarted()
     {
         var market = GameObject.FindObjectOfType<MarketManager>();
-        if (market.GetCreditworthiness() >= cost)
-        {
-            return true;
-        }
-        return false;
+        return (!market.IsGameOver && market.GetCreditworthiness() >= cost);
     }
 
     public GameObject GetRepresentation()

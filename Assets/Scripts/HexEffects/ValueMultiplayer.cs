@@ -25,6 +25,6 @@ class ValueMultiplayer : IEffect
     {
         var abs = Mathf.Abs(multiplier);
         var val = abs - 1f;
-        return new Vector3(0, val * 2, 0);
+        return new Vector3(0, val * 1, 0);
     }
 }
