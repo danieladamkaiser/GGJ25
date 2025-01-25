@@ -1536,6 +1536,10 @@ MonoBehaviour:
     type: 4
     cost: 100
     value: 50
+  - prefab: {fileID: 4619085422262626461, guid: aa85eb3fdfa7eee45ac361a79243dc6c, type: 3}
+    type: 6
+    cost: 200
+    value: 0
   ActionItemPrefab: {fileID: 4489785613981910462, guid: f3e2443cd7c81947caf73f8868c20b70, type: 3}
   PlusEffectPrefab: {fileID: 2140485968522987731, guid: b92b42a6184a5aa74a8c244414f5a172, type: 3}
   MinusEffectPrefab: {fileID: 2140485968522987731, guid: b92b42a6184a5aa74a8c244414f5a172, type: 3}

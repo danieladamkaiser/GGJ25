@@ -109,6 +109,9 @@ public class Build : IAction
             case HexTopsType.Skyscrapper:
                 BuildSkyscraperEffects(market, node);
                 break;
+            case HexTopsType.Highway:
+                BuildHighwayEffects(market, node);
+                break;
             default:
                 break;
         }
@@ -117,6 +120,12 @@ public class Build : IAction
 
     void BuildHouseEffects(MarketManager market, Node node)
     {
+        var types = new List<HexTopsType>();
+        types.Add(HexTopsType.Skyscrapper);
+        foreach (var neighbour in node.GetNeighborsRange(3))
+        {
+            neighbour.GetComponent<HexController>().AddEffect(new ValueMultiplayer(1.2f, types));
+        }
     }
     
     void BuildTreeEffects(MarketManager market, Node node)
@@ -137,9 +146,14 @@ public class Build : IAction
     {
         var types = new List<HexTopsType>();
         types.Add(HexTopsType.House);
-        foreach (var neighbour in node.GetNeighbours())
+        foreach (var neighbour in node.GetNeighborsRange(2))
         {
             neighbour.GetComponent<HexController>().AddEffect(new ValueMultiplayer(0.8f, types));
         }
+    }
+
+    void BuildHighwayEffects(MarketManager market, Node node)
+    {
+        node.GetComponent<HexController>().CreateNeighbours();
     }
 }
