@@ -136,13 +136,10 @@ public class Build : IAction
 
     void BuildHouseEffects(MarketManager market, Node node)
     {
-        market.AddValuation(cost);
     }
     
     void BuildTreeEffects(MarketManager market, Node node)
     {
-        market.AddValuation(cost);
-
         foreach (var neighbour in node.GetNeighbours())
         {
             neighbour.GetComponent<HexController>().AddEffect(new ValueMultiplayer(1.1f));
@@ -151,6 +148,5 @@ public class Build : IAction
     
     void BuildSkyscraperEffects(MarketManager market, Node node)
     {
-        market.AddValuation(cost);
     }
 }

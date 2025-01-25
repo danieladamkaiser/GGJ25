@@ -13,6 +13,7 @@ public partial class MarketManager : MonoBehaviour
     public TMP_Text interestText;
 
     public int currentValuation;
+    public int baseValuation = 1000;
     public int currentDebt;
     public float currentProgress;
 
@@ -60,17 +61,12 @@ public partial class MarketManager : MonoBehaviour
         SetDebt(currentDebt);
     }
 
-    public void AddValuation(int value)
-    {
-        SetValuation(currentValuation + value);
-    }
-
     public void AddDebt(int value)
     {
         SetDebt(currentDebt + value);
     }
 
-    private void SetValuation(int value)
+    public void SetValuation(int value)
     {
         valuationText.text = $"{value} $";
         currentValuation = value;
