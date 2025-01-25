@@ -11,28 +11,50 @@ public partial class HexController : MonoBehaviour
     private GameObject currentHexTopGO;
     private GameObject preview;
     private GameController gameController;
+    private List<IEffect> effects = new List<IEffect>();
+    private int buildingValue = 0;
     [SerializeField] Material transparentMaterial;
+    private Vector3 basePosition;
 
     // Start is called before the first frame update
     void Start()
     {
         gameController = FindObjectOfType<GameController>();
+        basePosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        ApplyPositionEffects();
     }
 
+    public void AddEffect(IEffect effect)
+    {
+        Debug.Log("Adding effect: " + effect.GetType() + " to "  + gameObject.name);
+        effects.Add(effect);
+    }
+
+    public int GetValue()
+    {
+        int val = buildingValue;
+        foreach (var effect in effects)
+        {
+            val = effect.GetValuation(val);
+        }
+        
+        return val;
+    }
+    
     public bool Occupied()
     {
         Debug.Log("Ocuppation = " + currentHexTop);
         return currentHexTop != HexTopsType.None;
     }
 
-    public void ChangeHexTop(HexTopsType hexTopsType)
+    public void ChangeHexTop(HexTopsType hexTopsType, int buildingValue)
     {
+        this.buildingValue = buildingValue;
         currentHexTop = hexTopsType;
 
         if (currentHexTopGO != null)
@@ -86,6 +108,17 @@ public partial class HexController : MonoBehaviour
         {
             Destroy(preview);
         }
+    }
+
+    void ApplyPositionEffects()
+    {
+        Vector3 pos = basePosition;
+        foreach (var effect in effects)
+        {
+            pos += effect.PositionModifier();
+        }
+        
+        transform.position = pos;
     }
 
     private void OnMouseEnter()

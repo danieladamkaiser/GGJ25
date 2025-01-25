@@ -86,11 +86,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7852bdbac868043bc55a695df2b5cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hexTops:
-  - prefab: {fileID: 7901771375496747128, guid: 9bba4cadf3ff29647b3534e003e2c543, type: 3}
-    type: 1
-  - prefab: {fileID: 7254489338627478931, guid: 66f813e3d094d254889b9e765176719f, type: 3}
-    type: 2
   currentHexTop: 0
   transparentMaterial: {fileID: 2100000, guid: 945a638d3ecdcaca99fef087f3212f97, type: 2}
 --- !u!114 &-7149096068247525106
@@ -107,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dir: 0
   randomizeDir: 1
-  lockY: 1
+  lockY: 0
 --- !u!64 &4589153635730184602
 MeshCollider:
   m_ObjectHideFlags: 0
