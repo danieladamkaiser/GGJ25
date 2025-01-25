@@ -1503,8 +1503,8 @@ MonoBehaviour:
   - prefab: {fileID: 3491598863828669790, guid: 6c61e77e83b50c942bc75f3c1a449917, type: 3}
     type: 4
   ActionItemPrefab: {fileID: 4489785613981910462, guid: f3e2443cd7c81947caf73f8868c20b70, type: 3}
-  PlusEffectPrefab: {fileID: 0}
-  MinusEffectPrefab: {fileID: 0}
+  PlusEffectPrefab: {fileID: 2140485968522987731, guid: b92b42a6184a5aa74a8c244414f5a172, type: 3}
+  MinusEffectPrefab: {fileID: 2140485968522987731, guid: b92b42a6184a5aa74a8c244414f5a172, type: 3}
 --- !u!4 &2075506505
 Transform:
   m_ObjectHideFlags: 0
