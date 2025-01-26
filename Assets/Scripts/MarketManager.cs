@@ -52,7 +52,14 @@ public partial class MarketManager : MonoBehaviour
     void Start()
     {
         sceneSwapper = FindObjectOfType<SceneSwapper>();
-        currentLevel = sceneSwapper.level;
+        if (sceneSwapper == null)
+        {
+            currentLevel = 1;
+        }
+        else
+        {
+            currentLevel = sceneSwapper.level - 1;
+        }
         stageText.outlineWidth = 0.25f;
         stageText.outlineColor = Color.black;
         SetDebt(currentDebt);

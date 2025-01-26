@@ -77,7 +77,7 @@ MonoBehaviour:
     prefab: {fileID: 38624599172565110, guid: 0e3cde92f5bce0845acbbc49f5c53b83, type: 3}
   - type: 1
     cost: 0
-    prefab: {fileID: 1388630021402403570, guid: 6d74694c37b266e4f99ded3edd6c4094, type: 3}
+    prefab: {fileID: 1311001834293155046, guid: 5b6c7dd93ab242561bcfd249bdef7ade, type: 3}
   - type: 2
     cost: 0
     prefab: {fileID: 1311001834293155046, guid: a53d53c9f5f49944da6bb40000509748, type: 3}

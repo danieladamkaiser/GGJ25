@@ -99,7 +99,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lobbing
+  m_text: Sell Shares
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce524ecfc10e9db0b816ef17004ddbd8, type: 2}
   m_sharedMaterial: {fileID: 7468895814697842050, guid: ce524ecfc10e9db0b816ef17004ddbd8, type: 2}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 7849024500760764665}
   - component: {fileID: 5113572615544513492}
   m_Layer: 0
-  m_Name: Lobbing
+  m_Name: SharesSell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
