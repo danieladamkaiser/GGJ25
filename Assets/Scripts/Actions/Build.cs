@@ -89,6 +89,11 @@ public class Build : IAction
         return hexTop.cost;
     }
 
+    public int GetValue()
+    {
+        return hexTop.value;
+    }
+
     public bool IsActionActive()
     {
         return active;

@@ -22,5 +22,6 @@ public interface IAction
     public bool CanBeStarted();
     public GameObject GetRepresentation();
     public int GetCost();
+    public int GetValue();
     public bool IsActionActive();
 }

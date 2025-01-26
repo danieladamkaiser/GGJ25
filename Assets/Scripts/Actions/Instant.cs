@@ -28,6 +28,11 @@ namespace Assets.Scripts.Actions
         {
             return args.cost;
         }
+        
+        public int GetValue()
+        {
+            return 0;
+        }
 
         public GameObject GetRepresentation()
         {

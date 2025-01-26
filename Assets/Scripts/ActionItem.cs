@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ActionItem : MonoBehaviour
@@ -12,6 +13,8 @@ public class ActionItem : MonoBehaviour
     private Vector3 baseScale;
     private GameController gameController;
     private bool hovered = false;
+    public TMP_Text price;
+    public TMP_Text value;
 
     void Start()
     {
@@ -58,11 +61,20 @@ public class ActionItem : MonoBehaviour
 
         if (_action.IsActionActive() || hovered)
         {
+            var market = FindObjectOfType<MarketManager>();
+
+            price.text = _action.GetCost().ToString();
+            value.text = (_action.GetValue() * market.globalModifier).ToString("0F");
+
             transform.localScale = baseScale * 1.7f;
+            price.enabled = true;
+            value.enabled = true;
         }
         else
         {
             transform.localScale = baseScale;
+            price.enabled = false;
+            value.enabled = false;
         }
     }
 

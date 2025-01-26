@@ -59,7 +59,7 @@ public partial class HexController : MonoBehaviour
             if (effect.CanBeApplied(currentHexTop))
             {
                 this.Invoke(() => ShowEffect(effect), effectDelay);
-                effectDelay += 0.15f;
+                effectDelay += 0.2f;
             }
         }
     }
