@@ -88,8 +88,8 @@ public partial class MarketManager : MonoBehaviour
 
     private void AddInterest()
     {
-        currentDebt = (int)(currentDebt * (1 + interestRate / 100f));
-        SetDebt(currentDebt);
+        var newDebt = (int)(currentDebt * (1 + interestRate / 100f));
+        SetDebt(newDebt);
     }
 
     public void AddDebt(int value)
@@ -114,9 +114,6 @@ public partial class MarketManager : MonoBehaviour
 
     public void NextIteration()
     {
-        AddInterest();
-        currentProgress += GetIncrementValue();
-        SetStage();
 
         if (IsGameOver)
         {
@@ -124,6 +121,12 @@ public partial class MarketManager : MonoBehaviour
             panel.SetActive(true);
             bool won = currentValuation > currentDebt;
             gameOverText.text = won ? "You won!" : "You lost!";
+        }
+        else
+        {
+            AddInterest();
+            currentProgress += GetIncrementValue();
+            SetStage();
         }
     }
 
@@ -189,7 +192,8 @@ public partial class MarketManager : MonoBehaviour
     {
         var valueSold = currentValuation * 0.1f;
         sharesSold += valueSold;
-        currentDebt -= (int)valueSold;
+        var newDebt = currentDebt - (int)valueSold;
+        SetDebt(newDebt);
     }
 
     public void Lobby()

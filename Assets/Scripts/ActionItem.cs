@@ -63,7 +63,7 @@ public class ActionItem : MonoBehaviour
         {
             var market = FindObjectOfType<MarketManager>();
 
-            price.text = _action.GetCost().ToString();
+            price.text = Mathf.RoundToInt(_action.GetCost() * market.globalModifier).ToString();
             value.text = Mathf.RoundToInt(_action.GetValue() * market.globalModifier).ToString();
 
             transform.localScale = baseScale * 1.7f;
