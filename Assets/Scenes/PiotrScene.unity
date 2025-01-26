@@ -676,7 +676,7 @@ PrefabInstance:
       objectReference: {fileID: 1678702086}
     - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
       propertyPath: hexTops.Array.data[1].cost
-      value: 180
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
       propertyPath: hexTops.Array.data[2].cost
@@ -684,7 +684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
       propertyPath: hexTops.Array.data[1].value
-      value: 120
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
       propertyPath: hexTops.Array.data[2].value

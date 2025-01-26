@@ -913,9 +913,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565a9b949fc8d314084b64d11e650591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 6
+  radius: 5
   prefab: {fileID: 8670984365532169010, guid: 5d0e3435790ad374bba850f2bfd56edd, type: 3}
-  percentOfTerrain: 0
+  percentOfTerrain: 25
 --- !u!1001 &8388156023724550186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -978,7 +978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
       propertyPath: hexTops.Array.data[1].cost
-      value: 180
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
       propertyPath: hexTops.Array.data[2].cost
@@ -994,7 +994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
       propertyPath: hexTops.Array.data[1].value
-      value: 120
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
       propertyPath: hexTops.Array.data[2].value
@@ -1015,7 +1015,7 @@ PrefabInstance:
     - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
       propertyPath: hexTops.Array.data[3].prefab
       value: 
-      objectReference: {fileID: 2862455465694887030, guid: a0aea46621a5bcc5d87cba8f1c500e2b, type: 3}
+      objectReference: {fileID: 3172675831071710483, guid: f8809a8cc16e64f4b960d25b45258829, type: 3}
     - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
       propertyPath: instants.Array.data[0].prefab
       value: 

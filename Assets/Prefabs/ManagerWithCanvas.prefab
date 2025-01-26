@@ -2923,24 +2923,24 @@ MonoBehaviour:
       InterestRates: 8
       GrowthRate: 0
     - Type: 3
-      Duration: 1
+      Duration: 2
       Color: {r: 0.42352942, g: 0.3372549, b: 0.44313726, a: 1}
       InterestRates: 10
       GrowthRate: -50
   - name: Level 2
     Stages:
     - Type: 0
-      Duration: 4
+      Duration: 3
       Color: {r: 0.7019608, g: 0.8901961, b: 0.85490197, a: 1}
       InterestRates: 5
       GrowthRate: 5
     - Type: 1
-      Duration: 4
+      Duration: 3
       Color: {r: 0.6901961, g: 0.92156863, b: 0.5764706, a: 1}
       InterestRates: 1
       GrowthRate: 15
     - Type: 2
-      Duration: 2
+      Duration: 3
       Color: {r: 0, g: 0, b: 0, a: 1}
       InterestRates: 6
       GrowthRate: 0
@@ -2952,25 +2952,25 @@ MonoBehaviour:
   - name: Level 3
     Stages:
     - Type: 0
-      Duration: 5
+      Duration: 3
       Color: {r: 0.7019608, g: 0.8901961, b: 0.85490197, a: 1}
       InterestRates: 5
       GrowthRate: 3
     - Type: 1
-      Duration: 6
+      Duration: 3
       Color: {r: 0.6901961, g: 0.92156863, b: 0.5764706, a: 1}
       InterestRates: 1
-      GrowthRate: 10
+      GrowthRate: 15
     - Type: 2
       Duration: 3
       Color: {r: 0.42352942, g: 0.3372549, b: 0.44313726, a: 1}
       InterestRates: 6
-      GrowthRate: 1
+      GrowthRate: 0
     - Type: 3
-      Duration: 4
+      Duration: 2
       Color: {r: 1, g: 0, b: 0, a: 1}
-      InterestRates: 3
-      GrowthRate: -25
+      InterestRates: 10
+      GrowthRate: -20
   progressSliderGO: {fileID: 2047201654060156352}
   incrementRangeMin: 1
   incrementRangeMax: 1
