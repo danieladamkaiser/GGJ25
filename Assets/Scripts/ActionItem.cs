@@ -29,7 +29,14 @@ public class ActionItem : MonoBehaviour
         radius += 2;
         transform.position += new Vector3(radius, 0, 0);
         var center = new Hex(0, 0);
-        baseAngle = -100 + index * 20;
+        if (radius <= 7)
+        {
+            baseAngle = -100 + index * 20;
+        }
+        else
+        {
+            baseAngle = -100 + index * 10;
+        }
 
         transform.RotateAround(center.ToWorld(), Vector3.up, baseAngle);
         cameraController = FindObjectOfType<CameraController>();
