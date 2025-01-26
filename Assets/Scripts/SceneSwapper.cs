@@ -29,7 +29,7 @@ public class SceneSwapper : MonoBehaviour
 
     public void AddLevel()
     {
-        level++;
+        level = Mathf.Min(level + 1, 3);
     }
 
     public void StartGame()

@@ -58,7 +58,7 @@ public partial class MarketManager : MonoBehaviour
         }
         else
         {
-            currentLevel = sceneSwapper.level;
+            currentLevel = sceneSwapper.level - 1;
         }
         stageText.outlineWidth = 0.25f;
         stageText.outlineColor = Color.black;
