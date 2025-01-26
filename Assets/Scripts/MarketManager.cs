@@ -56,14 +56,12 @@ public partial class MarketManager : MonoBehaviour
         sceneSwapper = FindObjectOfType<SceneSwapper>();
         stageText.outlineWidth = 0.25f;
         stageText.outlineColor = Color.black;
-        slider = progressSliderGO.GetComponent<Slider>();
-        slider.maxValue = GetTotalDuration();
         SetDebt(currentDebt);
         SetValuation(currentValuation);
         SetStage();
     }
 
-    private float GetTotalDuration()
+    public float GetTotalDuration()
     {
         return stages.Sum(s => s.Duration);
     }
@@ -112,7 +110,6 @@ public partial class MarketManager : MonoBehaviour
     {
         AddInterest();
         currentProgress += GetIncrementValue();
-        slider.value = currentProgress;
         SetStage();
 
         if (IsGameOver)
@@ -170,7 +167,7 @@ public partial class MarketManager : MonoBehaviour
 
     private float GetIncrementValue()
     {
-        return Random.Range(incrementRangeMin, incrementRangeMax);
+        return 1;
     }
     // Update is called once per frame
     void Update()
