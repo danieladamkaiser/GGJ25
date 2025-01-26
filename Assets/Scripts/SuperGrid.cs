@@ -127,6 +127,16 @@ public class SuperGrid : MonoBehaviour
                 if (Random.Range(0, 100) < percentOfTreeTerrain)
                 {
                     node.GetComponent<HexController>().ChangeHexTop(HexTopsType.Tree, 0);
+                    var types = new List<HexTopsType>();
+                    types.Add(HexTopsType.House);
+                    foreach (var neighbour in node.GetNeighbours())
+                    {
+                        neighbour.GetComponent<HexController>().AddEffect(
+                            new ValueMultiplayer(
+                                1.1f, types
+                            )
+                        );
+                    }
                 }
             }
         }
