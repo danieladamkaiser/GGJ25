@@ -14,7 +14,7 @@ public partial class MarketManager : MonoBehaviour
     public TMP_Text stageText;
     public TMP_Text interestText;
     public TMP_Text scoreText;
-
+    public TMP_Text globalMultiplierText;
     public GameObject panel;
 
     public int currentValuation;
@@ -157,6 +157,7 @@ public partial class MarketManager : MonoBehaviour
         interestRate = stages[i].InterestRates;
         interestText.text = interestRate.ToString() + " %";
         globalModifier *= (100 + stages[i].GrowthRate) / 100f;
+        stageBar.SetBar(globalModifier / 8f);
     }
 
     private float GetIncrementValue()
@@ -166,6 +167,7 @@ public partial class MarketManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        globalMultiplierText.text = "x" + globalModifier.ToString("F2");
         if (Input.GetKeyUp(KeyCode.Space))
         {
             NextIteration();
@@ -182,6 +184,7 @@ public partial class MarketManager : MonoBehaviour
     public void Lobby()
     {
         globalModifier *= 1.2f;
+        stageBar.SetBar(globalModifier / 8f);
         incrementRangeMax *= 1.4f;
     }
 }
