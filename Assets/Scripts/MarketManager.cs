@@ -1,6 +1,7 @@
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Slider = UnityEngine.UI.Slider;
 
 public partial class MarketManager : MonoBehaviour
@@ -20,6 +21,8 @@ public partial class MarketManager : MonoBehaviour
     public float currentProgress;
     public float globalModifier = 1;
     public int currentLevel;
+    public GameObject nextLevelButton;
+
 
     public Bar valueBar;
     public Bar stageBar;
@@ -124,10 +127,7 @@ public partial class MarketManager : MonoBehaviour
 
         if (IsGameOver)
         {
-            scoreText.text = $"{currentValuation - currentDebt} $";
-            panel.SetActive(true);
-            bool won = currentValuation > currentDebt;
-            gameOverText.text = won ? "You won!" : "You lost!";
+            ShowOverScreen();
         }
         else
         {
@@ -139,11 +139,17 @@ public partial class MarketManager : MonoBehaviour
 
         if (IsGameOver)
         {
-            scoreText.text = $"{currentValuation - currentDebt} $";
-            panel.SetActive(true);
-            bool won = currentValuation > currentDebt;
-            gameOverText.text = won ? "You won!" : "You lost!";
+            ShowOverScreen();
         }
+    }
+
+    private void ShowOverScreen()
+    {
+        scoreText.text = $"{currentValuation - currentDebt} $";
+        panel.SetActive(true);
+        bool won = currentValuation > currentDebt;
+        nextLevelButton.SetActive(won);
+        gameOverText.text = won ? "You won!" : "You lost!";
     }
 
     public void Restart()

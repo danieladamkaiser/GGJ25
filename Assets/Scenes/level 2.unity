@@ -839,6 +839,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1823876473}
     - target: {fileID: 7346705950196627806, guid: d61f0fe5b6f4bb34eb9cb2fae36c67d0, type: 3}
+      propertyPath: nextLevelButton
+      value: 
+      objectReference: {fileID: 1823876474}
+    - target: {fileID: 7346705950196627806, guid: d61f0fe5b6f4bb34eb9cb2fae36c67d0, type: 3}
       propertyPath: stages.Array.data[0].Duration
       value: 10
       objectReference: {fileID: 0}
@@ -869,6 +873,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1823876474 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4604005456228242610, guid: d61f0fe5b6f4bb34eb9cb2fae36c67d0, type: 3}
+  m_PrefabInstance: {fileID: 1823876472}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1983417729
 GameObject:
   m_ObjectHideFlags: 0
