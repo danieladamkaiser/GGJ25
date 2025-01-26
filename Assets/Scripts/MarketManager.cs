@@ -23,6 +23,10 @@ public partial class MarketManager : MonoBehaviour
     public float currentProgress;
     public float globalModifier = 1;
 
+    public Bar valueBar;
+    public Bar stageBar;
+    public Bar debtBar;
+    
     [SerializeField]
     public Stage[] stages;
 
@@ -91,13 +95,17 @@ public partial class MarketManager : MonoBehaviour
 
     public void SetValuation(int value)
     {
+        if (value == currentValuation) return;
         valuationText.text = $"{value} $";
         currentValuation = value;
+        valueBar.SetBar(currentValuation / 20000f);
     }
     private void SetDebt(int value)
     {
+        if (value == currentDebt) return;
         debtText.text = $"{value} $";
         currentDebt = value;
+        debtBar.SetBar(currentDebt / 20000f);
     }
 
     public void NextIteration()
