@@ -42,6 +42,7 @@ public partial class MarketManager : MonoBehaviour
     private Slider slider;
     private SceneSwapper sceneSwapper;
     private bool isCompanySold;
+    private float sharesSold;
 
     public bool IsGameOver => currentProgress > GetTotalDuration() || isCompanySold;
 
@@ -161,5 +162,18 @@ public partial class MarketManager : MonoBehaviour
         {
             NextIteration();
         }
+    }
+
+    public void SellShares()
+    {
+        var valueSold = currentValuation * 0.1f;
+        sharesSold += valueSold;
+        currentDebt -= (int)valueSold;
+    }
+
+    public void Lobby()
+    {
+        globalModifier *= 1.2f;
+        incrementRangeMax *= 1.4f;
     }
 }

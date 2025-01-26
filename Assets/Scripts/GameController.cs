@@ -1,3 +1,6 @@
+using Assets.Scripts.Actions;
+using Assets.Scripts.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +10,10 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private GameObject currentPlayerGO;
     [SerializeField] private HexTop[] hexTops;
+    [SerializeField] private InstantArgs[] instants;
     [SerializeField] private GameObject ActionItemPrefab;
-    [SerializeField] public GameObject PlusEffectPrefab;
     [SerializeField] public GameObject MinusEffectPrefab;
+    [SerializeField] public GameObject PlusEffectPrefab;
 
     private Player _player;
 
@@ -17,7 +21,11 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        Actions = hexTops.Select(ht=> new Build(ht)).ToArray();
+        IEnumerable<IAction> actions;
+
+        var builds = hexTops.Select(ht => new Build(ht));
+        actions = instants.Select(i => new Instant(i));
+        Actions = actions.Concat(builds).ToArray();
         _player = currentPlayerGO.GetComponent<Player>();
         SetupActions();
     }
@@ -35,7 +43,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void SetupActions()
@@ -46,5 +54,10 @@ public class GameController : MonoBehaviour
             var go = Instantiate(ActionItemPrefab, Vector3.zero, Quaternion.identity);
             go.GetComponent<ActionItem>().SetAction(action, i++);
         }
+    }
+
+    internal GameObject GetInstantPrefab(InstantType type)
+    {
+        return instants.Where(i => i.type == type).Select(i => i.prefab).FirstOrDefault();
     }
 }
