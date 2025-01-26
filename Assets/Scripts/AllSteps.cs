@@ -28,10 +28,10 @@ public class AllSteps : MonoBehaviour
         var progress = Mathf.RoundToInt(market.currentProgress);
 
         string res = "";
-        for (int i = 0; i < allSteps; i++)
+        for (int i = 0; i <= allSteps; i++)
         {
             var step = new Step();
-            step.filled = i <= progress;
+            step.filled = i < progress;
             res += step.str();
         }
 
