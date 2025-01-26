@@ -3,6 +3,14 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public IAction currentAction = null;
+    public AudioClip startActionSound;
+    public AudioClip endActionSound;
+    public AudioSource audioSource;
+    
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void SetAction(IAction action)
     {
@@ -16,6 +24,8 @@ public class Player : MonoBehaviour
         }
         currentAction = action;
         currentAction.OnStart();
+        audioSource.clip = startActionSound;
+        audioSource.Play();
     }
 
     void Update()
@@ -39,6 +49,8 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Mouse Down");
             currentAction.OnApply();
+            audioSource.clip = endActionSound;
+            audioSource.Play();
             currentAction = null;
         }
     }
