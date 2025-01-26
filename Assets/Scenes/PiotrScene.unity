@@ -675,6 +675,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1678702086}
     - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
+      propertyPath: hexTops.Array.data[1].cost
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
+      propertyPath: hexTops.Array.data[2].cost
+      value: 900
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
+      propertyPath: hexTops.Array.data[1].value
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
+      propertyPath: hexTops.Array.data[2].value
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
       propertyPath: instants.Array.data[0].prefab
       value: 
       objectReference: {fileID: 1311001834293155046, guid: c66d810056dfc0e36b0396135e67086a, type: 3}

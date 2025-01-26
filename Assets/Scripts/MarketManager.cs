@@ -45,6 +45,7 @@ public partial class MarketManager : MonoBehaviour
     private SceneSwapper sceneSwapper;
     private bool isCompanySold;
     private float sharesSold;
+    private int currentStage;
 
     public bool IsGameOver => currentProgress > GetTotalDuration() || isCompanySold;
 
@@ -124,6 +125,7 @@ public partial class MarketManager : MonoBehaviour
         }
         else
         {
+            globalModifier *= (100 + levels[currentLevel].Stages[currentStage].GrowthRate) / 100f;
             AddInterest();
             currentProgress += GetIncrementValue();
             SetStage();
@@ -166,11 +168,11 @@ public partial class MarketManager : MonoBehaviour
 
         i = Mathf.Clamp(i, 0, levels[currentLevel].Stages.Length - 1);
 
+        currentStage = i;
         stageText.text = levels[currentLevel].Stages[i].Type.ToString();
         stageText.color = levels[currentLevel].Stages[i].Color;
         interestRate = levels[currentLevel].Stages[i].InterestRates;
         interestText.text = interestRate.ToString() + " %";
-        globalModifier *= (100 + levels[currentLevel].Stages[i].GrowthRate) / 100f;
         stageBar.SetBar(globalModifier / 8f);
     }
 
