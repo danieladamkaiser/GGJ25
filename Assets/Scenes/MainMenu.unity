@@ -2163,7 +2163,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuSceneName: MainMenu
-  gameSceneName: PiotrScene
+  level1SceneName: level 1
+  level2SceneName: level 2
+  level3SceneName: PiotrScene
 --- !u!4 &2040604970
 Transform:
   m_ObjectHideFlags: 0

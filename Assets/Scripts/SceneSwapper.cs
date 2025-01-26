@@ -7,9 +7,11 @@ using UnityEngine.SceneManagement;
 public class SceneSwapper : MonoBehaviour
 {
     public string mainMenuSceneName;
-    public string gameSceneName;
+    public string level1SceneName;
+    public string level2SceneName;
+    public string level3SceneName;
 
-
+    private int level = 1;
 
 
     private void Awake()
@@ -25,9 +27,27 @@ public class SceneSwapper : MonoBehaviour
         }
     }
 
+    public void AddLevel()
+    {
+        level++;
+    }
+
     public void StartGame()
     {
-        SceneManager.LoadScene(gameSceneName);
+        if (level == 1)
+        {
+            SceneManager.LoadScene(level1SceneName);
+        }
+
+        if (level == 2)
+        {
+            SceneManager.LoadScene(level2SceneName);
+        }
+
+        if (level >= 3)
+        {
+            SceneManager.LoadScene(level3SceneName);
+        }
     }
 
     public void GoToMainMenu()

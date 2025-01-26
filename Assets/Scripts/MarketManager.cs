@@ -16,7 +16,7 @@ public partial class MarketManager : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text globalMultiplierText;
     public GameObject panel;
-
+    public TMP_Text gameOverText;
     public int currentValuation;
     public int baseValuation;
     public int currentDebt;
@@ -119,6 +119,8 @@ public partial class MarketManager : MonoBehaviour
         {
             scoreText.text = $"{currentValuation - currentDebt} $";
             panel.SetActive(true);
+            bool won = currentValuation > currentDebt;
+            gameOverText.text = won ? "You won!" : "You lost!";
         }
     }
 
@@ -130,6 +132,12 @@ public partial class MarketManager : MonoBehaviour
     public void GoToMainMenu()
     {
         sceneSwapper.GoToMainMenu();
+    }
+
+    public void NextLevel()
+    {
+        sceneSwapper.AddLevel();
+        sceneSwapper.StartGame();
     }
 
     private void SetStage()
