@@ -103,6 +103,9 @@ public partial class MarketManager : MonoBehaviour
         valuationText.text = $"{value} $";
         currentValuation = value;
         valueBar.SetBar(currentValuation / 20000f);
+        
+        valuationText.outlineColor = Color.black;
+        valuationText.outlineWidth = 0.25f;
     }
     private void SetDebt(int value)
     {
@@ -110,6 +113,9 @@ public partial class MarketManager : MonoBehaviour
         debtText.text = $"{value} $";
         currentDebt = value;
         debtBar.SetBar(currentDebt / 20000f);
+        
+        debtText.outlineColor = Color.black;
+        debtText.outlineWidth = 0.25f;
     }
 
     public void NextIteration()
