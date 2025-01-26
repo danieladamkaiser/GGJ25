@@ -417,6 +417,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db568aa2443e4a34bdb3c8f9be49e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startActionSound: {fileID: 0}
+  endActionSound: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!4 &1830820603
 Transform:
   m_ObjectHideFlags: 0

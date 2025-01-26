@@ -61,7 +61,7 @@ MonoBehaviour:
     cost: 1000
     value: 500
     canBePlaced: 1
-  - prefab: {fileID: 4619085422262626461, guid: aa85eb3fdfa7eee45ac361a79243dc6c, type: 3}
+  - prefab: {fileID: 6517695800645232405, guid: 51aaa989f67ddbb438d5b698ba265420, type: 3}
     type: 6
     cost: 100
     value: 0
