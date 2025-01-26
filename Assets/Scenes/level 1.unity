@@ -811,6 +811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 4
   prefab: {fileID: 8670984365532169010, guid: 5d0e3435790ad374bba850f2bfd56edd, type: 3}
+  percentOfTerrain: 0
 --- !u!1001 &8388156023724550186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -865,11 +866,23 @@ PrefabInstance:
       objectReference: {fileID: 1830820601}
     - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
       propertyPath: hexTops.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
       propertyPath: instants.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
+      propertyPath: hexTops.Array.data[2].cost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
+      propertyPath: hexTops.Array.data[2].type
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
+      propertyPath: hexTops.Array.data[2].value
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
       propertyPath: instants.Array.data[0].cost
@@ -880,9 +893,17 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
+      propertyPath: hexTops.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 2862455465694887030, guid: a0aea46621a5bcc5d87cba8f1c500e2b, type: 3}
+    - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
       propertyPath: instants.Array.data[0].prefab
       value: 
       objectReference: {fileID: 1311001834293155046, guid: a53d53c9f5f49944da6bb40000509748, type: 3}
+    - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
+      propertyPath: hexTops.Array.data[2].canBePlaced
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7806906230355038471, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
       propertyPath: m_Name
       value: GameController

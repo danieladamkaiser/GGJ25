@@ -23,7 +23,15 @@ public class GameController : MonoBehaviour
     {
         IEnumerable<IAction> actions;
 
-        var builds = hexTops.Select(ht => new Build(ht));
+        List<IAction> builds = new List<IAction>();
+        foreach (var top in hexTops)
+        {
+            if (top.canBePlaced)
+            {
+                builds.Add(new Build(top));
+            }
+        }
+
         actions = instants.Select(i => new Instant(i));
         Actions = actions.Concat(builds).ToArray();
         _player = currentPlayerGO.GetComponent<Player>();

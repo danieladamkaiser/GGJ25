@@ -18,10 +18,14 @@ public partial class HexController : MonoBehaviour
     private Vector3 basePosition;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         gameController = FindObjectOfType<GameController>();
         basePosition = transform.position;
+    }
+
+    void Start()
+    {
     }
 
     // Update is called once per frame

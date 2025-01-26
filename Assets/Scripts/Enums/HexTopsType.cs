@@ -7,5 +7,6 @@ public enum HexTopsType
     Multihouse,
     Skyscrapper,
     River,
-    Highway
+    Highway,
+    Terrain,
 }

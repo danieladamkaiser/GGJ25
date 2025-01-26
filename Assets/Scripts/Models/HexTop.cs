@@ -8,4 +8,5 @@ public class HexTop
     public HexTopsType type;
     public int cost;
     public int value;
+    public bool canBePlaced = true;
 }

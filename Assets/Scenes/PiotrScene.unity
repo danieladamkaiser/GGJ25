@@ -811,6 +811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 7
   prefab: {fileID: 8670984365532169010, guid: 5d0e3435790ad374bba850f2bfd56edd, type: 3}
+  percentOfTerrain: 34
 --- !u!1001 &8388156023724550186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -863,6 +864,26 @@ PrefabInstance:
       propertyPath: currentPlayerGO
       value: 
       objectReference: {fileID: 1830820601}
+    - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
+      propertyPath: hexTops.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
+      propertyPath: hexTops.Array.data[4].cost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
+      propertyPath: hexTops.Array.data[4].type
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
+      propertyPath: hexTops.Array.data[4].prefab
+      value: 
+      objectReference: {fileID: 2862455465694887030, guid: a0aea46621a5bcc5d87cba8f1c500e2b, type: 3}
+    - target: {fileID: 4660070060011865276, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
+      propertyPath: hexTops.Array.data[4].canBePlaced
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7806906230355038471, guid: 6168729bdf7f6bb4d99fefd1ab94891e, type: 3}
       propertyPath: m_Name
       value: GameController

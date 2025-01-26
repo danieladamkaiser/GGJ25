@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SuperGrid : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class SuperGrid : MonoBehaviour
     public int radius;
     [SerializeField]
     public GameObject prefab;
+
+    [Range(0, 100)]
+    public float percentOfTerrain;
 
     private Node currentNode;
     private Dictionary<string, Node> nodes = new Dictionary<string, Node>();
@@ -101,7 +105,11 @@ public class SuperGrid : MonoBehaviour
                 {
                     continue;
                 }
-                AddNode(hex);
+                var node = AddNode(hex);
+                if (Random.Range(0, 100) < percentOfTerrain)
+                {
+                    node.GetComponent<HexController>().ChangeHexTop(HexTopsType.Terrain, 0);
+                }
             }
         }
     }
@@ -112,8 +120,12 @@ public class SuperGrid : MonoBehaviour
 
     void Start()
     {
-        CreateGrid();
         market = FindObjectOfType<MarketManager>();
+        CreateGrid();
+    }
+
+    void OnEnable()
+    {
     }
 
     // Update is called once per frame
