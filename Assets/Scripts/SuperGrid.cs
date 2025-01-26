@@ -108,6 +108,18 @@ public class SuperGrid : MonoBehaviour
                     continue;
                 }
                 var node = AddNode(hex);
+            }
+        }
+        for (int x = -radius; x < radius; x++)
+        {
+            for (int y = -radius; y < radius; y++)
+            {
+                var hex = new Hex(x, y);
+                if (radius < Vector3.Distance(hex.ToWorld(), Vector3.zero))
+                {
+                    continue;
+                }
+                var node = AddNode(hex);
                 if (Random.Range(0, 100) < percentOfRockTerrain)
                 {
                     node.GetComponent<HexController>().ChangeHexTop(HexTopsType.Terrain, 0);
