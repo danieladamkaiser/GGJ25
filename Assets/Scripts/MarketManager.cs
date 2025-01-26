@@ -136,6 +136,14 @@ public partial class MarketManager : MonoBehaviour
             currentProgress += GetIncrementValue();
             SetStage();
         }
+
+        if (IsGameOver)
+        {
+            scoreText.text = $"{currentValuation - currentDebt} $";
+            panel.SetActive(true);
+            bool won = currentValuation > currentDebt;
+            gameOverText.text = won ? "You won!" : "You lost!";
+        }
     }
 
     public void Restart()
