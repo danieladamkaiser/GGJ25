@@ -11,7 +11,7 @@ public class SceneSwapper : MonoBehaviour
     public string level2SceneName;
     public string level3SceneName;
 
-    private int level = 1;
+    public int level = 1;
 
 
     private void Awake()

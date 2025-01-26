@@ -19,13 +19,14 @@ public partial class MarketManager : MonoBehaviour
     public int currentDebt;
     public float currentProgress;
     public float globalModifier = 1;
+    public int currentLevel;
 
     public Bar valueBar;
     public Bar stageBar;
     public Bar debtBar;
-    
-    [SerializeField]
-    public Stage[] stages;
+
+    public Level[] levels;
+    //public Stage[] stages;
 
 
     public GameObject progressSliderGO;
@@ -51,6 +52,7 @@ public partial class MarketManager : MonoBehaviour
     void Start()
     {
         sceneSwapper = FindObjectOfType<SceneSwapper>();
+        currentLevel = sceneSwapper.level;
         stageText.outlineWidth = 0.25f;
         stageText.outlineColor = Color.black;
         SetDebt(currentDebt);
@@ -60,7 +62,7 @@ public partial class MarketManager : MonoBehaviour
 
     public float GetTotalDuration()
     {
-        return stages.Sum(s => s.Duration);
+        return levels[currentLevel].Stages.Sum(s => s.Duration);
     }
 
     private void OnValidate()
@@ -142,23 +144,23 @@ public partial class MarketManager : MonoBehaviour
         {
             i++;
 
-            if (i == stages.Length)
+            if (i == levels[currentLevel].Stages.Length)
             {
                 break;
             }
 
-            currentStageProgress = currentProgress - stages.Take(i).Sum(s => s.Duration);
+            currentStageProgress = currentProgress - levels[currentLevel].Stages.Take(i).Sum(s => s.Duration);
 
 
-        } while (currentStageProgress > stages[i].Duration);
+        } while (currentStageProgress > levels[currentLevel].Stages[i].Duration);
 
-        i = Mathf.Clamp(i, 0, stages.Length - 1);
+        i = Mathf.Clamp(i, 0, levels[currentLevel].Stages.Length - 1);
 
-        stageText.text = stages[i].Type.ToString();
-        stageText.color = stages[i].Color;
-        interestRate = stages[i].InterestRates;
+        stageText.text = levels[currentLevel].Stages[i].Type.ToString();
+        stageText.color = levels[currentLevel].Stages[i].Color;
+        interestRate = levels[currentLevel].Stages[i].InterestRates;
         interestText.text = interestRate.ToString() + " %";
-        globalModifier *= (100 + stages[i].GrowthRate) / 100f;
+        globalModifier *= (100 + levels[currentLevel].Stages[i].GrowthRate) / 100f;
         stageBar.SetBar(globalModifier / 8f);
     }
 

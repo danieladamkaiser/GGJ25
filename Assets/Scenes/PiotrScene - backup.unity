@@ -383,10 +383,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7346705950196627806, guid: d61f0fe5b6f4bb34eb9cb2fae36c67d0, type: 3}
-      propertyPath: currentDebt
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -482,6 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 7
   prefab: {fileID: 8670984365532169010, guid: 5d0e3435790ad374bba850f2bfd56edd, type: 3}
+  percentOfTerrain: 0
 --- !u!1 &2075506503
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,13 +512,23 @@ MonoBehaviour:
   hexTops:
   - prefab: {fileID: 7901771375496747128, guid: 9bba4cadf3ff29647b3534e003e2c543, type: 3}
     type: 1
+    cost: 0
+    value: 0
+    canBePlaced: 1
   - prefab: {fileID: 7254489338627478931, guid: 66f813e3d094d254889b9e765176719f, type: 3}
     type: 2
+    cost: 0
+    value: 0
+    canBePlaced: 1
   - prefab: {fileID: 3491598863828669790, guid: 6c61e77e83b50c942bc75f3c1a449917, type: 3}
     type: 4
+    cost: 0
+    value: 0
+    canBePlaced: 1
+  instants: []
   ActionItemPrefab: {fileID: 4489785613981910462, guid: f3e2443cd7c81947caf73f8868c20b70, type: 3}
-  PlusEffectPrefab: {fileID: 2140485968522987731, guid: b92b42a6184a5aa74a8c244414f5a172, type: 3}
   MinusEffectPrefab: {fileID: 2140485968522987731, guid: b92b42a6184a5aa74a8c244414f5a172, type: 3}
+  PlusEffectPrefab: {fileID: 2140485968522987731, guid: b92b42a6184a5aa74a8c244414f5a172, type: 3}
 --- !u!4 &2075506505
 Transform:
   m_ObjectHideFlags: 0
