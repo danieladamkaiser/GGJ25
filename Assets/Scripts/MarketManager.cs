@@ -1,9 +1,6 @@
 using System.Linq;
 using TMPro;
-using TMPro.EditorUtilities;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using Slider = UnityEngine.UI.Slider;
 
 public partial class MarketManager : MonoBehaviour

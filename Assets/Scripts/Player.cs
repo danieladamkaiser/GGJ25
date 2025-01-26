@@ -1,16 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public IAction currentAction = null;
 
-    void Start()
-    {
-    }
-    
-    
     public void SetAction(IAction action)
     {
         if (currentAction != null)
