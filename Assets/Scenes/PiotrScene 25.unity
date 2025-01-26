@@ -478,6 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 7
   prefab: {fileID: 8670984365532169010, guid: 5d0e3435790ad374bba850f2bfd56edd, type: 3}
+  percentOfTerrain: 0
 --- !u!1001 &8388156023724550186
 PrefabInstance:
   m_ObjectHideFlags: 0
