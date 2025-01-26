@@ -13,12 +13,14 @@ public class SuperGrid : MonoBehaviour
     public GameObject prefab;
 
     [Range(0, 100)]
-    public float percentOfTerrain;
+    public int percentOfRockTerrain;
+    [Range(0, 100)]
+    public int percentOfTreeTerrain;
 
     private Node currentNode;
     private Dictionary<string, Node> nodes = new Dictionary<string, Node>();
     private MarketManager market;
-    
+
     public Node GetNode(Hex hex)
     {
         if (!nodes.ContainsKey(hex.Hash()))
@@ -106,9 +108,13 @@ public class SuperGrid : MonoBehaviour
                     continue;
                 }
                 var node = AddNode(hex);
-                if (Random.Range(0, 100) < percentOfTerrain)
+                if (Random.Range(0, 100) < percentOfRockTerrain)
                 {
                     node.GetComponent<HexController>().ChangeHexTop(HexTopsType.Terrain, 0);
+                }
+                if (Random.Range(0, 100) < percentOfTreeTerrain)
+                {
+                    node.GetComponent<HexController>().ChangeHexTop(HexTopsType.Tree, 0);
                 }
             }
         }
